@@ -37,13 +37,11 @@
             height: 70px; 
             animation: spin 1s linear infinite; 
         } 
-         
         @keyframes spin { 
             100% { 
                 transform: rotate(360deg); 
             } 
         } 
-         
         .center { 
             position: absolute; 
             top: 0; 
@@ -62,9 +60,10 @@
             @yield('body')
         </main>
     </div>
+    @include('sweetalert::alert')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.js"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.js"></script> --}}
     <script> 
         document.onreadystatechange = function() { 
             if (document.readyState !== "complete") { 
