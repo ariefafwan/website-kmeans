@@ -42,6 +42,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
     //kmeans
     Route::get('/data', [AdminController::class, 'data'])->name('data.index');
+    Route::post('/data', [AdminController::class, 'storedata'])->name('data.store');
+    Route::get('/edit/{id}', [AdminController::class, 'editdata'])->name('data.edit');
+    Route::post('/update', [AdminController::class, 'updatedata'])->name('data.update');
+    Route::post('/destroydata/{id}', [AdminController::class, 'destroydata'])->name('data.destroy');
     Route::get('/kmeans', [AdminController::class, 'kmeans'])->name('kmeans.index');
 
     Route::get('/test', [AdminController::class, 'test'])->name('test');
