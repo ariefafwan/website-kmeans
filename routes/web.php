@@ -47,6 +47,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/edit/{id}', [AdminController::class, 'editdata'])->name('data.edit');
     Route::post('/update', [AdminController::class, 'updatedata'])->name('data.update');
     Route::post('/destroydata/{id}', [AdminController::class, 'destroydata'])->name('data.destroy');
+    Route::post('/getimportdata', [AdminController::class, 'importdata'])->name('data.import');
+    Route::get('/getexportdata', [AdminController::class, 'exportdata'])->name('data.export');
     Route::get('/kmeans/get', [KmeansController::class, 'kmeans'])->name('kmeans.index');
 
     Route::get('/test', [AdminController::class, 'test'])->name('test');

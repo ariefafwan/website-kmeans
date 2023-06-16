@@ -10,11 +10,8 @@ class Data extends Model
 {
     use HasFactory;
 
-    // $table->string('bulan');
-    //         $table->float('ha_block');
-    //         $table->float('ffb_produksi_ton');
-    //         $table->float('janjang_panen');
-    //         $table->float('brondolan_kg');
+    protected $guarded = [];
+    protected $fillable = ['bulan', 'ha_block', 'ffb_produksi_ton', 'janjang_panen', 'brondolan_kg'];
 
     //! saveHelper func saving to database
     public static function saveHelper($dcentroid1, $dcentroid2, $dcentroid3, $mindistance, $clusterall)
@@ -23,8 +20,8 @@ class Data extends Model
             'distancecentroid1'        => $dcentroid1,
             'distancecentroid2'        => $dcentroid2,
             'distancecentroid3'        => $dcentroid3,
-            'mindistance'        => $mindistance,
-            'cluster'        => $clusterall,
+            'mindistance'              => $mindistance,
+            'cluster'                  => $clusterall,
         ]);
     }
 
