@@ -16,11 +16,11 @@ class AdminController extends Controller
         return view('home', compact('page', 'hasil'));
     }
 
-    public function kmeans()
-    {
-        $page = "K-Means Method";
-        return view('kmeans', compact('page'));
-    }
+    // public function kmeans()
+    // {
+    //     $page = "K-Means Method";
+    //     return view('kmeans', compact('page'));
+    // }
 
     public function test()
     {
@@ -47,7 +47,7 @@ class AdminController extends Controller
     public function data()
     {
         $page = "Data Hasil Produksi";
-        $data = Data::all();
+        $data = Data::orderBy('bulan', 'desc')->get();
         return view('data.data', compact('page', 'data'));
     }
 
