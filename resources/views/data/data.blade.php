@@ -12,8 +12,8 @@
                             <div class="col-md-8">
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal"><i class="bi bi-plus-circle"></i> Tambah Data</button>
                                 <!-- Button trigger modal -->																	
-                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#importDisaster"><i class="bi bi-arrow-down-circle"></i> Import Data </button>
-                                <a href="#!" class="btn btn-success"><i class="bi bi-cloud-upload-fill"></i> Export Data </a>									
+                                <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#importmodal"><i class="bi bi-arrow-down-circle"></i> Import Data </button>
+                                <a href="{{ route('data.export') }}" class="btn btn-success"><i class="bi bi-cloud-upload-fill" target="_blank"></i> Export Data </a>
                             </div>
                             <div class="col-md-4">
                                 <form action="/disasters" method="get">
@@ -65,29 +65,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        
-                        <!-- Modal Import Excel-->
-                        <div class="modal fade" id="importDisaster" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                            <form method="post" action="#!" id="frmImport" enctype="multipart/form-data">								
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                <h3 class="modal-title" id="exampleModalLabel">Import Data</h3>									
-                                </div>
-                                @csrf
-                                <div class="modal-body">									
-                                    <div class="form-group">
-                                        <input type="file" id="file" name="file" required="required">											
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>									
-                                    <input type="submit" class="btn btn-primary" value="import">										
-                                </div>
-                            </div>
-                            </form>
-                            </div>
-                        </div>
+                        @include('data.dataimport')
                         @include('data.dataedit')
                     </div>
                 </div>

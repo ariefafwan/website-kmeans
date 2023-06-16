@@ -11,6 +11,10 @@ class KmeansController extends Controller
     public function kmeans()
     {
         $page = "K-MEANS HASIL";
+        $all = Data::all();
+        if ($all->count() <= 24) {
+            return view('gagal', compact('page'));
+        }
         $data = [];
         $name = [];
 
@@ -107,7 +111,7 @@ class KmeansController extends Controller
         //dd($puritygeocluster);    
         $puritygeo = $this->purity($puritygeocluster, $data);
         //dd($puritygeo);
-        return view('kmeans', compact('page', 'cluster', 'centroid', 'data', 'valuedata', 'valuecentroid', 'hasil_iterasi', 'name', 'ratio', 'puritygeo'));
+        return view('kmeans', compact('all', 'page', 'cluster', 'centroid', 'data', 'valuedata', 'valuecentroid', 'hasil_iterasi', 'name', 'ratio', 'puritygeo'));
     }
 
     public function earlyCentroidGeo($data, $cluster)

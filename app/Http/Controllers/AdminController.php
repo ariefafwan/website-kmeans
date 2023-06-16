@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\DataExport;
+use App\Imports\DataImport;
 use App\Models\Data;
 use App\Models\Hasil;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminController extends Controller
@@ -104,5 +107,23 @@ class AdminController extends Controller
 
         Alert::success('Informasi Pesan!', 'Data Berhasil dihapus');
         return redirect()->route('data.index');
+    }
+
+    public function importdata(Request $request)
+    {
+        // validate
+        $this->validate($request, [
+            'file' => 'required|mimes:csv,xls,xlsx'
+        ]);
+
+        Excel::import(new DataImport, request()->file('file'));
+
+        Alert::success('Informasi Pesan!', 'Data Berhasil diimport');
+        return redirect()->route('data.index');
+    }
+
+    public function exportdata()
+    {
+        return Excel::download(new DataExport, 'DataProduksi.xlsx');
     }
 }
