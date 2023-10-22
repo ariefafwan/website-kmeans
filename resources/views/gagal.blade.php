@@ -9,7 +9,7 @@
 
                 <div class="card-body">
                     <h5 class="card-title">Gagal !</h5>
-                    <p class="card-text">Data Tidak Cukup, Minimal 25 Data!</p>
+                    <p class="card-text">Data Tidak Cukup, Minimal 20 Data!</p>
                 </div>
             </div>
         </div>

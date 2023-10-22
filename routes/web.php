@@ -47,10 +47,22 @@ Route::middleware('auth')->group(function () {
     Route::get('/edit/{id}', [AdminController::class, 'editdata'])->name('data.edit');
     Route::post('/update', [AdminController::class, 'updatedata'])->name('data.update');
     Route::post('/destroydata/{id}', [AdminController::class, 'destroydata'])->name('data.destroy');
-    Route::post('/getimportdata', [AdminController::class, 'importdata'])->name('data.import');
-    Route::get('/getexportdata', [AdminController::class, 'exportdata'])->name('data.export');
     Route::get('/kmeans/get', [KmeansController::class, 'kmeans'])->name('kmeans.index');
 
+    Route::get('/desa', [AdminController::class, 'desa'])->name('desa.index');
+    Route::get('/desa/{id}/edit', [AdminController::class, 'editdesa'])->name('desa.edit');
+    Route::post('/desa', [AdminController::class, 'storedesa'])->name('desa.store');
+    Route::post('/desa/update', [AdminController::class, 'updatedesa'])->name('desa.update');
+    Route::post('/desa/destroy/{id}', [AdminController::class, 'destroydesa'])->name('desa.destroy');
+
+    Route::get('/cluster', [AdminController::class, 'cluster'])->name('cluster.index');
+    Route::get('/cluster/{id}/edit', [AdminController::class, 'editcluster'])->name('cluster.edit');
+    Route::post('/cluster', [AdminController::class, 'storecluster'])->name('cluster.store');
+    Route::post('/cluster/update', [AdminController::class, 'updatecluster'])->name('cluster.update');
+    Route::post('/cluster/destroy/{id}', [AdminController::class, 'destroycluster'])->name('cluster.destroy');
+
     Route::get('/test', [AdminController::class, 'test'])->name('test');
+
+    Route::get('/resourcedata', [AdminController::class, 'resourcedata'])->name('resource.data');
 });
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');

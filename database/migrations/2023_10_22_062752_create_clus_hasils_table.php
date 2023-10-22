@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('data', function (Blueprint $table) {
+        Schema::create('clus_hasils', function (Blueprint $table) {
             $table->id();
-            $table->string('bulan');
-            $table->float('ha_block');
-            $table->float('ffb_produksi_ton');
-            $table->float('janjang_panen');
-            $table->float('brondolan_kg');
+            $table->string('name');
+            $table->string('detail');
+            // $table->string('marker');
             $table->timestamps();
         });
     }
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('data');
+        Schema::dropIfExists('clus_hasils');
     }
 };
