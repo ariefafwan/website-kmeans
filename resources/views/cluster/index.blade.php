@@ -14,34 +14,22 @@
                             </div>
                         </div>
                         <br>
-                        @include('data.dataadd')
+                        @include('cluster.clusteradd')
                         <table id="datatable" class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Desa</th>
-                                    <th>Sample</th>
-                                    <th>PH Air</th>
-                                    <th>PH Tanah</th>
-                                    <th>Suhu</th>
-                                    <th>Cluster</th>
-                                    <th>Latitude</th>
-                                    <th>Longitude</th>
+                                    <th>Nama Cluster</th>
+                                    <th>Keterangan</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($data as $index => $row)
+                                @foreach ($cluster as $index => $row)
                                 <tr>
                                     <td scope="row">{{ $index + 1 }}</td>
-                                    <td>{{ $row->desa->title }}</td>
-                                    <td>{{ $row->sample }}</td>
-                                    <td>{{ $row->ph_air }}</td>
-                                    <td>{{ $row->ph_tanah }}</td>
-                                    <td>{{ $row->suhu }}</td>
-                                    <td>{{ $row->clus_hasil->name }}</td>
-                                    <td>{{ $row->latitude }}</td>
-                                    <td>{{ $row->longitude }}</td>
+                                    <td>{{ $row->name }}</td>
+                                    <td>{{ $row->detail }}</td>
                                     <td align="center" class="d-flex justify-content-evenly">
                                         <button class="btn btn-warning edit" data-id="{{ $row->id }} data-bs-toggle="modal" data-bs-target="#editModal">
                                             <i class="bi bi-pencil"></i>
@@ -51,7 +39,7 @@
                                             <i class="bi bi-trash"></i>
                                         </a>
                                         <form id="data-delete-form-{{$row->id}}"
-                                            action="{{ route('data.destroy', $row->id) }}" method="POST"
+                                            action="{{ route('cluster.destroy', $row->id) }}" method="POST"
                                             style="display: none;">
                                             @csrf
                                         </form>
@@ -60,7 +48,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        @include('data.dataedit')
+                        @include('cluster.clusteredit')
                     </div>
                 </div>
             </div>
@@ -73,22 +61,17 @@
     $(document).ready(function() {
     //edit data
     $('.edit').on("click",function() {
+        console.log(true);
         var id = $(this).attr('data-id');
         $.ajax({
-            url: '/edit/'+id,
+            url: '/cluster/'+id+'/edit',
             type: "GET",
             dataType: "JSON",
             success: function(data)
                 {
                     $('#editid').val(data.id);
-                    $('#editclus_hasil_id').val(data.clus_hasil_id);
-                    $('#editdesa_id').val(data.desa_id);
-                    $('#editlatitude').val(data.latitude);
-                    $('#editlongitude').val(data.longitude);
-                    $('#editsample').val(data.sample);
-                    $('#editph_tanah').val(data.ph_tanah);
-                    $('#editph_air').val(data.ph_air);
-                    $('#editsuhu').val(data.suhu);
+                    $('#editname').val(data.name);
+                    $('#editdetail').val(data.detail);
                     $('#editModal').modal('show');
                 }
             });

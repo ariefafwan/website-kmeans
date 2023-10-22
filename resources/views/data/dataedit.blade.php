@@ -11,43 +11,46 @@
                 @csrf
                 <input type="hidden" class="form-control" id="editid" name="id">
                 <div class="mb-3">
-                    <label for="editbulan" class="form-label fw-bold">Date</label>
-                    <input type="date" class="form-control @if ($errors->has('bulan')) has-error @endif" id="editbulan" name="bulan" autofocus>
-                    @error('bulan')
-                        <span class="help-block text-danger">{{ $message }}</span>
-                    @enderror
+                    <label for="editdesa_id" class="form-label fw-bold">Desa</label>
+                    <select class="form-control" aria-label="Default select example" name="desa_id" id="editdesa_id">
+                        <option selected>-- Pilih Desa --</option>
+                        @foreach ($desa as $d => $row)
+                        <option value="{{ $row->id }}">{{ $row->title }}</option> 
+                        @endforeach
+                    </select>
                 </div>
                 <div class="mb-3">
-                    <label for="ha_block" class="form-label fw-bold">Ha Block</label>
-                    <input type="number" class="form-control @if ($errors->has('ha_block')) has-error @endif" id="editha_block" name="ha_block"
-                        placeholder="Masukkan Ha Block...">
-                    @error('ha_block')
-                        <span class="help-block text-danger">{{ $message }}</span>
-                    @enderror
+                    <label for="editsample" class="form-label fw-bold">Nama Sample</label>
+                    <input type="text" class="form-control" id="editsample" name="sample" placeholder="Masukkan Nama Sample...">
                 </div>
                 <div class="mb-3">
-                    <label for="ffb_produksi_ton" class="form-label fw-bold">FFB Produksi Ton</label>
-                    <input type="number" class="form-control @if ($errors->has('ffb_produksi_ton')) has-error @endif" id="editffb_produksi_ton" name="ffb_produksi_ton"
-                        placeholder="Masukkan FFB Produksi Ton...">
-                    @error('ffb_produksi_ton')
-                        <span class="help-block text-danger">{{ $message }}</span>
-                    @enderror
+                    <label for="editclus_hasil_id" class="form-label fw-bold">Cluster</label>
+                    <select class="form-control" aria-label="Default select example" name="clus_hasil_id" id="editclus_hasil_id">
+                        <option selected>-- Pilih Cluster --</option>
+                        @foreach ($cluster as $c => $row)
+                        <option value="{{ $row->id }}">{{ $row->name }} - {{ $row->detail }}</option> 
+                        @endforeach
+                    </select>
                 </div>
                 <div class="mb-3">
-                    <label for="janjang_panen" class="form-label fw-bold">Janjang Panen</label>
-                    <input type="number" class="form-control @if ($errors->has('janjang_panen')) has-error @endif" id="editjanjang_panen" name="janjang_panen"
-                        placeholder="Masukkan Janjang Panen...">
-                    @error('janjang_panen')
-                        <span class="help-block text-danger">{{ $message }}</span>
-                    @enderror
+                    <label for="editph_air" class="form-label fw-bold">Ph Air</label>
+                    <input type="number" class="form-control" id="editph_air" name="ph_air" placeholder="Masukkan Ph Air...">
                 </div>
                 <div class="mb-3">
-                    <label for="brondolan_kg" class="form-label fw-bold">Brondolan Kg</label>
-                    <input type="number" class="form-control @if ($errors->has('brondolan_kg')) has-error @endif" id="editbrondolan_kg" name="brondolan_kg"
-                        placeholder="Masukkan Brondolan Kg...">
-                    @error('brondolan_kg')
-                        <span class="help-block text-danger">{{ $message }}</span>
-                    @enderror
+                    <label for="editph_tanah" class="form-label fw-bold">Ph Tanah</label>
+                    <input type="number" class="form-control" id="editph_tanah" name="ph_tanah" placeholder="Masukkan Ph Tanah...">
+                </div>
+                <div class="mb-3">
+                    <label for="editsuhu" class="form-label fw-bold">Suhu</label>
+                    <input type="number" class="form-control" id="editsuhu" name="suhu" placeholder="Masukkan Janjang Panen...">
+                </div>
+                <div class="mb-3">
+                    <label for="editlatitude" class="form-label fw-bold">Latitude</label>
+                    <input type="text" class="form-control" id="editlatitude" name="latitude" placeholder="Masukkan Latitude...">
+                </div>
+                <div class="mb-3">
+                    <label for="editlongitude" class="form-label fw-bold">Longitude</label>
+                    <input type="text" class="form-control" id="editlongitude" name="longitude" placeholder="Masukkan Longitude...">
                 </div>
         </div>
                 <div class="modal-footer">

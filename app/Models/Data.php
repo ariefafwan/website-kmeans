@@ -11,7 +11,7 @@ class Data extends Model
     use HasFactory;
 
     protected $guarded = [];
-    protected $fillable = ['bulan', 'ha_block', 'ffb_produksi_ton', 'janjang_panen', 'brondolan_kg'];
+    protected $fillable = ['desa_id', 'clus_hasil_id', 'ph_air', 'ph_tanah', 'suhu', 'sample', 'longitude', 'latitude'];
 
     //! saveHelper func saving to database
     public static function saveHelper($dcentroid1, $dcentroid2, $dcentroid3, $mindistance, $clusterall)
@@ -51,7 +51,23 @@ class Data extends Model
     public static function avgDataDisaster()
     {
         return DB::table('datas')
-            ->select(DB::raw("AVG(ha_block) as avgha_block"), DB::raw("AVG(ffb_produksi_ton) as avgproduksi"), DB::raw("AVG(jenjang_panen) as avgjenjangpanen"), DB::raw("AVG(brondolan_kg) as avgbrondolankg"))
+            ->select(DB::raw("AVG(ph_air) as avgph_air"), DB::raw("AVG(ph_tanah) as avgph_tanah"), DB::raw("AVG(suhu) as avgsuhu"))
             ->get();
     }
+
+    public function desa()
+    {
+        return $this->belongsTo(Desa::class);
+    }
+
+    public function clus_hasil()
+    {
+        return $this->belongsTo(ClusHasil::class);
+    }
+
+    // public function getFileMarkerAttribute()
+    // {
+    //     $file = $this->clus_hasil->marker;
+    //     return asset('storage/marker/' . $file);
+    // }
 }
