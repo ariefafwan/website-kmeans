@@ -1,7 +1,7 @@
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(80, 192, 149)">
     <div class="container px-3 py-2">
-        <a class="navbar-brand text-info-emphasis" href="#">KOPRAL BABI</a>
+        <a class="navbar-brand text-info-emphasis" href="#">GIS & K-Means Budidaya Bandeng</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
