@@ -18,7 +18,7 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $page = "Dashboard";
+        $page = "Dashboard - Peta Penyebaran Data";
         $cluster = ClusHasil::all();
         return view('home', compact('page', 'cluster'));
     }

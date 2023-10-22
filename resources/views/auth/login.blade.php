@@ -5,10 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6 col-xl-5">
             <div class="card">
-                <div class="card-header text-center" style="background-color: rgb(80, 192, 149)">
+                <div class="card-header text-center" style="background-color: rgb(76, 76, 175)">
                     <div class="text-center m-auto">
-                        <h3>{{ __('Login') }}</h3>
-                        <p class="text-muted">Login menggunakan user & password</p>
+                        <h3 class="text-light">{{ __('Login') }}</h3>
+                        <p class="text-light">Login menggunakan user & password</p>
                     </div>
                 </div>
                 <div class="card-body p-4">
