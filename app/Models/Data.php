@@ -51,7 +51,7 @@ class Data extends Model
     public static function avgDataDisaster()
     {
         return DB::table('datas')
-            ->select(DB::raw("AVG(ph_air) as avgph_air"), DB::raw("AVG(ph_tanah) as avgph_tanah"), DB::raw("AVG(suhu) as avgsuhu"))
+            ->select(DB::raw("AVG(ph_air) as avgph_air"), DB::raw("AVG(suhu) as avgph_tanah"), DB::raw("AVG(ph_tanah) as avgph_tanah"))
             ->get();
     }
 
