@@ -20,6 +20,7 @@
                                         <th>Ph Air</th>
                                         <th>Suhu</th>
                                         <th>Ph Tanah</th>
+                                        <th>Luas Tanah</th>
                                     </tr>
                                 </thead>
                                 <tbody class="body">
@@ -29,6 +30,7 @@
                                         <td>{{$value_centroid[0]}}</td>
                                         <td>{{$value_centroid[1]}}</td>
                                         <td>{{$value_centroid[2]}}</td>
+                                        <td>{{$value_centroid[3]}}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -49,10 +51,11 @@
                                     <thead>
                                         <tr>
                                             <th rowspan="2" class="text-center">#</th>
-                                            <th rowspan="2" class="text-center">Sample</th>
+                                            <th rowspan="2" class="text-center">Desa</th>
                                             <th rowspan="2" class="text-center">Ph Air</th>
                                             <th rowspan="2" class="text-center">Suhu</th>
                                             <th rowspan="2" class="text-center">Ph Tanah</th>
+                                            <th rowspan="2" class="text-center">Luas Tanah</th>
                                             <th rowspan="1" class="text-center" colspan="{{ $cluster }}">Jarak ke Centroid</th>
                                             <th rowspan="2" class="text-center">Jarak Terdekat</th>
                                             <th rowspan="2" class="text-center">Cluster</th>
@@ -72,6 +75,7 @@
                                             <td class="text-center">{{$value_data['data'][0]}}</td>
                                             <td class="text-center">{{$value_data['data'][1]}}</td>
                                             <td class="text-center">{{$value_data['data'][2]}}</td>
+                                            <td class="text-center">{{$value_data['data'][3]}}</td>
                                             @foreach ($value_data['jarak_centroid'] as $key_jc => $value_jarak)
                                             <td class="text-center">{{$value_jarak}}</td>
                                             @endforeach

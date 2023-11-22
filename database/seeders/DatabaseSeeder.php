@@ -27,11 +27,11 @@ class DatabaseSeeder extends Seeder
             "title" => "Afwan",
         ]);
 
-        ClusHasil::Create([
-            'name' => 'C1',
-            'detail'  => 'Baik',
-            // 'marker' => 'kuning.png'
-        ]);
+        // ClusHasil::Create([
+        //     'name' => 'C1',
+        //     'detail'  => 'Baik',
+        //     // 'marker' => 'kuning.png'
+        // ]);
         $this->call(DataSeeder::class);
     }
 }

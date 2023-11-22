@@ -19,16 +19,16 @@
                     </select>
                 </div>
                 <div class="mb-3">
-                    <label for="sample" class="form-label fw-bold">Nama Sample</label>
-                    <input type="text" class="form-control" id="sample" name="sample" placeholder="Masukkan Nama Sample...">
+                    <label for="luas_tanah" class="form-label fw-bold">Luas Tanah</label>
+                    <input type="number" class="form-control" id="luas_tanah" name="luas_tanah" placeholder="Masukkan Luas Tanah...">
                 </div>
                 <div class="mb-3">
-                    <label for="clus_hasil_id" class="form-label fw-bold">Cluster</label>
-                    <select class="form-control" aria-label="Default select example" name="clus_hasil_id" id="clus_hasil_id">
+                    <label for="clus_hasil" class="form-label fw-bold">Cluster</label>
+                    <select class="form-control" aria-label="Default select example" name="clus_hasil" id="clus_hasil">
                         <option selected>-- Pilih Cluster --</option>
-                        @foreach ($cluster as $c => $row)
-                        <option value="{{ $row->id }}">{{ $row->name }} - {{ $row->detail }}</option> 
-                        @endforeach
+                        <option value="C1">C1 - Sangat Baik</option> 
+                        <option value="C2">C2 - Baik</option> 
+                        <option value="C3">C3 - Kurang Baik</option>
                     </select>
                 </div>
                 <div class="mb-3">

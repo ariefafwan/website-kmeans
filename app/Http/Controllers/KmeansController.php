@@ -12,7 +12,7 @@ class KmeansController extends Controller
     {
         $page = "K-MEANS HASIL";
         $all = Data::all();
-        if ($all->count() < 20) {
+        if ($all->count() <= 5) {
             return view('gagal', compact('page'));
         }
         $data = [];
@@ -21,7 +21,7 @@ class KmeansController extends Controller
         $dataGeographic = Data::all();
         foreach ($dataGeographic as $row) {
             $data[] = $row;
-            $name[] = $row['sample'];
+            $name[] = $row->desa->title;
         }
         // dd($name);
         $data = [];
@@ -30,13 +30,13 @@ class KmeansController extends Controller
                 $row['ph_air'],
                 $row['suhu'],
                 $row['ph_tanah'],
-                $row['sample'],
+                $row['luas_tanah'],
+                $row->desa->title,
             ];
         }
         $cluster = 3;
-        // dd($data);
         $centroid = $this->earlyCentroidGeo($data, $cluster);
-        // dd($centroid);
+        //dd($centroid);
         $hasil_iterasi = [];
         $hasil_cluster = [];
         $itr = 0;
@@ -46,20 +46,19 @@ class KmeansController extends Controller
             foreach ($data as $key => $valuedata) {
                 // dd($valuedata);
                 $iterasi[$key]['data'] = $valuedata;
-                // dd($centroid[$itr]);
                 foreach ($centroid[$itr] as $keycentroid => $valuecentroid) {
                     //dd($valuecentroid);
                     $iterasi[$key]['jarak_centroid'][] = $this->distance($valuedata, $valuecentroid);
                     //dd($iterasi);
                 }
                 $iterasi[$key]['jarak_terdekat'] = $this->nearDistance($iterasi[$key]['jarak_centroid'], $centroid);
+                //dd($iterasi);
             }
             array_push($hasil_iterasi, $iterasi);
             $centroid[++$itr] = $this->newCentroid($iterasi, $hasil_cluster);
-            // dd($centroid);
-            // dd($hasil_cluster);
+            //dd($centroid);          
             $lanjutkan = $this->centroidChange($centroid, $itr);
-            // dd($lanjutkan);
+            //dd($centroid);
             $boolval = boolval($lanjutkan) ? 'ya' : 'tidak';
             if (!$lanjutkan)
                 break;
@@ -81,10 +80,10 @@ class KmeansController extends Controller
         //     $result_centroid1,
         // ];
         // dd($result_centroid1[1][0]);
-        // $result_iterasi = last($hasil_iterasi);
+        $result_iterasi = last($hasil_iterasi);
         // dd($result_iterasi);
         Data::deleteHelper();
-        // dd($result_iterasi);
+
 
         foreach ($result_iterasi as $key => $value) {
             // $dcentroid1 = $value["jarak_centroid"][0];
@@ -120,7 +119,7 @@ class KmeansController extends Controller
         // dd($cluster);
         $randCentroid = [];
         for ($i = 0; $i < $cluster; $i++) {
-            $temp = [1, 9, 19];
+            $temp = [2, 12, 23];
             while (in_array($randCentroid, [$temp])) {
                 $temp = rand(0, (count($data) - 1));
             }
@@ -129,6 +128,7 @@ class KmeansController extends Controller
                 $data[$temp[$i]][0],
                 $data[$temp[$i]][1],
                 $data[$temp[$i]][2],
+                $data[$temp[$i]][3],
             ];
         }
         return $centroid;
@@ -136,7 +136,7 @@ class KmeansController extends Controller
 
     public function distance($data = array(), $centroid = array())
     {
-        $resultDistance = sqrt(pow(($data[0] - $centroid[0]), 2) + pow(($data[1] - $centroid[1]), 2) + pow(($data[2] - $centroid[2]), 2));
+        $resultDistance = sqrt(pow(($data[0] - $centroid[0]), 2) + pow(($data[1] - $centroid[1]), 2) + pow(($data[2] - $centroid[2]), 2) + pow(($data[3] - $centroid[3]), 2));
         // dd($resultDistance);
         return $resultDistance;
     }
@@ -168,6 +168,7 @@ class KmeansController extends Controller
             $hasil_cluster[($value['jarak_terdekat']['cluster'] - 1)][1][] = $value['data'][1];
             $hasil_cluster[($value['jarak_terdekat']['cluster'] - 1)][2][] = $value['data'][2];
             $hasil_cluster[($value['jarak_terdekat']['cluster'] - 1)][3][] = $value['data'][3];
+            $hasil_cluster[($value['jarak_terdekat']['cluster'] - 1)][4][] = $value['data'][4];
         }
         $new_centroid = [];
         foreach ($hasil_cluster as $key => $value) {
@@ -176,6 +177,7 @@ class KmeansController extends Controller
                 array_sum($value[1]) / count($value[1]),
                 array_sum($value[2]) / count($value[2]),
                 array_sum($value[3]) / count($value[3]),
+                array_sum($value[4]) / count($value[4]),
             ];
         }
         ksort($new_centroid);
@@ -184,15 +186,8 @@ class KmeansController extends Controller
 
     public function centroidChange($centroid, $itr)
     {
-        // dd($itr);
-        // if ($itr <= 1) {
-        //     $centroid_lama = $this->flatten_array($centroid[$itr]); //flattern array     
-        // } else {
-        //     $centroid_lama = $this->flatten_array($centroid[($itr - 1)]); //flattern array 
-        // }
-        // dd($centroid);
         $centroid_lama = $this->flatten_array($centroid[($itr - 1)]); //flattern array 
-        // dd($centroid);
+        // dd($centroid_lama);
         $centroid_baru = $this->flatten_array($centroid[$itr]); //flatten array
         // dd($centroid_baru);
         $jumlah_sama = 0;
@@ -229,7 +224,6 @@ class KmeansController extends Controller
 
         // $resultc1c2 = sqrt(pow(($result_centroid1[0][0] - $result_centroid2[0][0]), 2) + pow(($result_centroid1[0][1] - $result_centroid2[0][1]), 2) + pow(($result_centroid1[0][2] - $result_centroid2[0][2]), 2) + pow(($result_centroid1[0][3] - $result_centroid2[0][3]), 2) + pow(($result_centroid1[0][4] - $result_centroid2[1][4]), 2) + pow(($result_centroid1[0][5] - $result_centroid2[0][5]), 2));
         // $resultc1c2 = sqrt(pow(($result_centroid1[0][0] - $result_centroid2[0][0]), 2) + pow(($result_centroid1[0][1] - $result_centroid2[0][1]), 2) + pow(($result_centroid1[0][2] - $result_centroid2[0][2]), 2) + pow(($result_centroid1[0][3] - $result_centroid2[0][3]), 2) + pow(($result_centroid1[0][4] - $result_centroid2[1][4]), 2) + pow(($result_centroid1[0][5] - $result_centroid2[0][5]), 2));
-        // dd($result_centroid);
 
         $resultc1c2 = sqrt(pow(($result_centroid[0][0] - $result_centroid[1][0]), 2) + pow(($result_centroid[0][1] - $result_centroid[1][1]), 2) + pow(($result_centroid[0][2] - $result_centroid[1][2]), 2) + pow(($result_centroid[0][3] - $result_centroid[1][3]), 2));
         $resultc1c3 = sqrt(pow(($result_centroid[0][0] - $result_centroid[2][0]), 2) + pow(($result_centroid[0][1] - $result_centroid[2][1]), 2) + pow(($result_centroid[0][2] - $result_centroid[2][2]), 2) + pow(($result_centroid[0][3] - $result_centroid[2][3]), 2));

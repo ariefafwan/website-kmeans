@@ -55,11 +55,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/desa/update', [AdminController::class, 'updatedesa'])->name('desa.update');
     Route::post('/desa/destroy/{id}', [AdminController::class, 'destroydesa'])->name('desa.destroy');
 
-    Route::get('/cluster', [AdminController::class, 'cluster'])->name('cluster.index');
-    Route::get('/cluster/{id}/edit', [AdminController::class, 'editcluster'])->name('cluster.edit');
-    Route::post('/cluster', [AdminController::class, 'storecluster'])->name('cluster.store');
-    Route::post('/cluster/update', [AdminController::class, 'updatecluster'])->name('cluster.update');
-    Route::post('/cluster/destroy/{id}', [AdminController::class, 'destroycluster'])->name('cluster.destroy');
+    // Route::get('/cluster', [AdminController::class, 'cluster'])->name('cluster.index');
+    // Route::get('/cluster/{id}/edit', [AdminController::class, 'editcluster'])->name('cluster.edit');
+    // Route::post('/cluster', [AdminController::class, 'storecluster'])->name('cluster.store');
+    // Route::post('/cluster/update', [AdminController::class, 'updatecluster'])->name('cluster.update');
+    // Route::post('/cluster/destroy/{id}', [AdminController::class, 'destroycluster'])->name('cluster.destroy');
 
     Route::get('/test', [AdminController::class, 'test'])->name('test');
 

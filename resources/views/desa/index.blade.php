@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="container">
-                    <h3 class="panel-title">Data Sample</h3>
+                    <h3 class="panel-title">Data Desa</h3>
                         <div class="row">
                             <div class="col-md-8">
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal"><i class="bi bi-plus-circle"></i> Tambah Data</button>

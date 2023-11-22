@@ -15,12 +15,11 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('desa_id')->unsigned();
             $table->foreign('desa_id')->references('id')->on('desas')->onDelete('cascade')->onUpdate('cascade');
-            $table->bigInteger('clus_hasil_id')->unsigned()->nullable();
-            $table->foreign('clus_hasil_id')->references('id')->on('clus_hasils')->onDelete('cascade')->onUpdate('cascade');
+            $table->enum('clus_hasil', ['C1', 'C2', 'C3']);
             $table->float('ph_air');
             $table->float('ph_tanah');
             $table->float('suhu');
-            $table->string('sample');
+            $table->string('luas_tanah');
             $table->string('longitude');
             $table->string('latitude');
             $table->timestamps();

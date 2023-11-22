@@ -11,7 +11,7 @@ class Data extends Model
     use HasFactory;
 
     protected $guarded = [];
-    protected $fillable = ['desa_id', 'clus_hasil_id', 'ph_air', 'ph_tanah', 'suhu', 'sample', 'longitude', 'latitude'];
+    protected $fillable = ['desa_id', 'clus_hasil', 'ph_air', 'ph_tanah', 'suhu', 'luas_tanah', 'longitude', 'latitude'];
 
     //! saveHelper func saving to database
     public static function saveHelper($dcentroid1, $dcentroid2, $dcentroid3, $mindistance, $clusterall)
@@ -51,7 +51,7 @@ class Data extends Model
     public static function avgDataDisaster()
     {
         return DB::table('datas')
-            ->select(DB::raw("AVG(ph_air) as avgph_air"), DB::raw("AVG(suhu) as avgph_tanah"), DB::raw("AVG(ph_tanah) as avgph_tanah"))
+            ->select(DB::raw("AVG(ph_air) as avgph_air"), DB::raw("AVG(suhu) as avgsuhu"), DB::raw("AVG(ph_tanah) as avgph_tanah"), DB::raw("AVG(luas_tanah) as avgluas_tanah"))
             ->get();
     }
 
