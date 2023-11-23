@@ -9,7 +9,6 @@
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <a class="nav-link fs-5 text-light" href="{{ route('dashboard') }}"><i class="bi bi-speedometer2"></i> Dashboard</a>
                 <a class="nav-link fs-5 text-light" href="{{ route('desa.index') }}"><i class="bi bi-houses-fill"></i></i> Desa</a>
-                <a class="nav-link fs-5 text-light" href="{{ route('cluster.index') }}"><i class="bi bi-exclude"></i></i> Cluster</a>
                 <a class="nav-link fs-5 text-light" href="{{ route('data.index') }}"><i class="bi bi-book"></i> Data</a>
                 <a class="nav-link fs-5 text-light" href="{{ route('kmeans.index') }}"><i class="bi bi-clipboard-data"></i> Kmeans</a>
                 <form action="{{ route('logout') }}" method="POST">

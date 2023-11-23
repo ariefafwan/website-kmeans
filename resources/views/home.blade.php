@@ -89,31 +89,89 @@
                 legend.onAdd = function(map) {
                 var div = L.DomUtil.create("div", "legend");
                 div.innerHTML += "<h4>Pembagian Cluster</h4>";
-                <?php foreach ($cluster as $index => $any) { ?>
-                    div.innerHTML += '<span>{{ $any->name }} : {{ $any->detail }}</span><br>';
-                <?php } ?>
+                    div.innerHTML += '<i style="background: #31882A"></i><span>C1 : Sangat Baik</span><br>';
+                    div.innerHTML += '<i style="background: #C1A32D"></i><span>C2 : Baik</span><br>';
+                    div.innerHTML += '<i style="background: #982E40"></i><span>C3 : Kurang Baik</span><br>';
                 return div;
                 };
 
                 legend.addTo(map);
 
-                // <?php foreach ($cluster as $index => $any) { ?>
-                //     var {{ $any->name }} = L.icon({
-                //         iconUrl: '{{ $any->FileMarker }}',
-                //         iconSize:     [38, 95], // size of the icon
-                //         iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-                //         popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-                //     });
-                // <?php } ?>
+                var greenIcon = new L.Icon({
+                  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+                  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                  iconSize: [25, 41],
+                  iconAnchor: [12, 41],
+                  popupAnchor: [1, -34],
+                  shadowSize: [41, 41]
+                });
+
+                var yellowIcon = new L.Icon({
+                    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-yellow.png',
+                    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                    iconSize: [25, 41],
+                    iconAnchor: [12, 41],
+                    popupAnchor: [1, -34],
+                    shadowSize: [41, 41]
+                });
+
+                var redIcon = new L.Icon({
+                  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+                  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                  iconSize: [25, 41],
+                  iconAnchor: [12, 41],
+                  popupAnchor: [1, -34],
+                  shadowSize: [41, 41]
+                });
                 
                 res.map((list) => {
-                    // var icon = {icon: list.clus_hasil.name};
-                    // console.log(icon);
-                    L.marker([list.latitude, list.longitude]).addTo(map)
-                        .bindPopup(`${list.sample}<br> ${list.clus_hasil.name}`)
+                    if (list.clus_hasil == 'C1') {
+                      L.marker([list.latitude, list.longitude], {icon: greenIcon}).addTo(map)
+                        .bindPopup(`<div class="card" style="width: 10rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center">${list.desa.title}</h5>
+                                    <p class="text-start">
+                                        <span>Luas Tanah : ${list.luas_tanah}</span></br>
+                                        <span>PH Tanah : ${list.ph_tanah}</span></br>
+                                        <span>PH Air : ${list.ph_air}</span></br>
+                                        <span>Suhu : ${list.suhu}</span></br>
+                                        <span>Cluster : ${list.clus_hasil}</span></br>
+                                    </p>
+                                    </div>
+                                </div>`)
                         .openPopup();
+                    } else if (list.clus_hasil == 'C2') {
+                      L.marker([list.latitude, list.longitude], {icon: yellowIcon}).addTo(map)
+                        .bindPopup(`<div class="card" style="width: 10rem;">
+                                        <div class="card-body">
+                                            <h5 class="card-title text-center">${list.desa.title}</h5>
+                                            <p class="text-start">
+                                                <span>Luas Tanah : ${list.luas_tanah}</span></br>
+                                                <span>PH Tanah : ${list.ph_tanah}</span></br>
+                                                <span>PH Air : ${list.ph_air}</span></br>
+                                                <span>Suhu : ${list.suhu}</span></br>
+                                                <span>Cluster : ${list.clus_hasil}</span></br>
+                                            </p>
+                                        </div>
+                                    </div>`)
+                        .openPopup();
+                    } else if (list.clus_hasil == 'C3') {
+                      L.marker([list.latitude, list.longitude], {icon: redIcon}).addTo(map)
+                        .bindPopup(`<div class="card" style="width: 10rem;">
+                                        <div class="card-body">
+                                            <h5 class="card-title text-center">${list.desa.title}</h5>
+                                            <p class="text-start">
+                                                <span>Luas Tanah : ${list.luas_tanah}</span></br>
+                                                <span>PH Tanah : ${list.ph_tanah}</span></br>
+                                                <span>PH Air : ${list.ph_air}</span></br>
+                                                <span>Suhu : ${list.suhu}</span></br>
+                                                <span>Cluster : ${list.clus_hasil}</span></br>
+                                            </p>
+                                        </div>
+                                    </div>`)
+                        .openPopup();
+                    }
                 })
-                
               }
           });
     });

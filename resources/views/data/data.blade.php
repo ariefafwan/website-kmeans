@@ -20,10 +20,11 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Desa</th>
-                                    <th>Sample</th>
+                                    <th>Luas Tanah</th>
                                     <th>PH Air</th>
                                     <th>PH Tanah</th>
                                     <th>Suhu</th>
+                                    <th>Curah Hujan</th>
                                     <th>Cluster</th>
                                     <th>Latitude</th>
                                     <th>Longitude</th>
@@ -35,11 +36,12 @@
                                 <tr>
                                     <td scope="row">{{ $index + 1 }}</td>
                                     <td>{{ $row->desa->title }}</td>
-                                    <td>{{ $row->sample }}</td>
+                                    <td>{{ $row->luas_tanah }}</td>
                                     <td>{{ $row->ph_air }}</td>
                                     <td>{{ $row->ph_tanah }}</td>
                                     <td>{{ $row->suhu }}</td>
-                                    <td>{{ $row->clus_hasil->name }}</td>
+                                    <td>{{ $row->curah_hujan }}</td>
+                                    <td>{{ $row->clus_hasil }}</td>
                                     <td>{{ $row->latitude }}</td>
                                     <td>{{ $row->longitude }}</td>
                                     <td align="center" class="d-flex justify-content-evenly">
@@ -81,14 +83,15 @@
             success: function(data)
                 {
                     $('#editid').val(data.id);
-                    $('#editclus_hasil_id').val(data.clus_hasil_id);
+                    $('#editclus_hasil').val(data.clus_hasil);
                     $('#editdesa_id').val(data.desa_id);
                     $('#editlatitude').val(data.latitude);
                     $('#editlongitude').val(data.longitude);
-                    $('#editsample').val(data.sample);
+                    $('#editluas_tanah').val(data.luas_tanah);
                     $('#editph_tanah').val(data.ph_tanah);
                     $('#editph_air').val(data.ph_air);
                     $('#editsuhu').val(data.suhu);
+                    $('#editcurah_hujan').val(data.curah_hujan);
                     $('#editModal').modal('show');
                 }
             });

@@ -20,16 +20,16 @@
                     </select>
                 </div>
                 <div class="mb-3">
-                    <label for="editsample" class="form-label fw-bold">Nama Sample</label>
-                    <input type="text" class="form-control" id="editsample" name="sample" placeholder="Masukkan Nama Sample...">
+                    <label for="editluas_tanah" class="form-label fw-bold">Luas Tanah</label>
+                    <input type="number" class="form-control" id="editluas_tanah" name="luas_tanah" placeholder="Masukkan Luas Tanah...">
                 </div>
                 <div class="mb-3">
-                    <label for="editclus_hasil_id" class="form-label fw-bold">Cluster</label>
-                    <select class="form-control" aria-label="Default select example" name="clus_hasil_id" id="editclus_hasil_id">
+                    <label for="editclus_hasil" class="form-label fw-bold">Cluster</label>
+                    <select class="form-control" aria-label="Default select example" name="clus_hasil" id="editclus_hasil">
                         <option selected>-- Pilih Cluster --</option>
-                        @foreach ($cluster as $c => $row)
-                        <option value="{{ $row->id }}">{{ $row->name }} - {{ $row->detail }}</option> 
-                        @endforeach
+                        <option value="C1">C1 - Sangat Baik</option> 
+                        <option value="C2">C2 - Baik</option> 
+                        <option value="C3">C3 - Kurang Baik</option>
                     </select>
                 </div>
                 <div class="mb-3">
@@ -42,7 +42,11 @@
                 </div>
                 <div class="mb-3">
                     <label for="editsuhu" class="form-label fw-bold">Suhu</label>
-                    <input type="number" class="form-control" id="editsuhu" name="suhu" placeholder="Masukkan Janjang Panen...">
+                    <input type="number" class="form-control" id="editsuhu" name="suhu" placeholder="Masukkan Suhu...">
+                </div>
+                <div class="mb-3">
+                    <label for="editcurah_hujan" class="form-label fw-bold">Curah Hujan</label>
+                    <input type="number" class="form-control" id="editcurah_hujan" name="curah_hujan" placeholder="Masukkan Curah Hujan...">
                 </div>
                 <div class="mb-3">
                     <label for="editlatitude" class="form-label fw-bold">Latitude</label>
