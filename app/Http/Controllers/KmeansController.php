@@ -31,6 +31,7 @@ class KmeansController extends Controller
                 $row['suhu'],
                 $row['ph_tanah'],
                 $row['luas_tanah'],
+                $row['curah_hujan'],
                 $row->desa->title,
             ];
         }
@@ -119,7 +120,7 @@ class KmeansController extends Controller
         // dd($cluster);
         $randCentroid = [];
         for ($i = 0; $i < $cluster; $i++) {
-            $temp = [2, 12, 23];
+            $temp = [0, 2, 4];
             while (in_array($randCentroid, [$temp])) {
                 $temp = rand(0, (count($data) - 1));
             }
@@ -129,6 +130,7 @@ class KmeansController extends Controller
                 $data[$temp[$i]][1],
                 $data[$temp[$i]][2],
                 $data[$temp[$i]][3],
+                $data[$temp[$i]][4],
             ];
         }
         return $centroid;
@@ -136,7 +138,7 @@ class KmeansController extends Controller
 
     public function distance($data = array(), $centroid = array())
     {
-        $resultDistance = sqrt(pow(($data[0] - $centroid[0]), 2) + pow(($data[1] - $centroid[1]), 2) + pow(($data[2] - $centroid[2]), 2) + pow(($data[3] - $centroid[3]), 2));
+        $resultDistance = sqrt(pow(($data[0] - $centroid[0]), 2) + pow(($data[1] - $centroid[1]), 2) + pow(($data[2] - $centroid[2]), 2) + pow(($data[3] - $centroid[3]), 2) + pow(($data[4] - $centroid[4]), 2));
         // dd($resultDistance);
         return $resultDistance;
     }
@@ -169,6 +171,7 @@ class KmeansController extends Controller
             $hasil_cluster[($value['jarak_terdekat']['cluster'] - 1)][2][] = $value['data'][2];
             $hasil_cluster[($value['jarak_terdekat']['cluster'] - 1)][3][] = $value['data'][3];
             $hasil_cluster[($value['jarak_terdekat']['cluster'] - 1)][4][] = $value['data'][4];
+            $hasil_cluster[($value['jarak_terdekat']['cluster'] - 1)][5][] = $value['data'][5];
         }
         $new_centroid = [];
         foreach ($hasil_cluster as $key => $value) {
@@ -178,6 +181,7 @@ class KmeansController extends Controller
                 array_sum($value[2]) / count($value[2]),
                 array_sum($value[3]) / count($value[3]),
                 array_sum($value[4]) / count($value[4]),
+                array_sum($value[5]) / count($value[5]),
             ];
         }
         ksort($new_centroid);

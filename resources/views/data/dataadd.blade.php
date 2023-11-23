@@ -41,7 +41,11 @@
                 </div>
                 <div class="mb-3">
                     <label for="suhu" class="form-label fw-bold">Suhu</label>
-                    <input type="number" class="form-control" id="suhu" name="suhu" placeholder="Masukkan Janjang Panen...">
+                    <input type="number" class="form-control" id="suhu" name="suhu" placeholder="Masukkan Suhu...">
+                </div>
+                <div class="mb-3">
+                    <label for="curah_hujan" class="form-label fw-bold">Curah Hujan</label>
+                    <input type="number" class="form-control" id="curah_hujan" name="curah_hujan" placeholder="Masukkan Curah Hujan...">
                 </div>
                 <div class="mb-3">
                     <label for="latitude" class="form-label fw-bold">Latitude</label>

@@ -24,6 +24,7 @@
                                     <th>PH Air</th>
                                     <th>PH Tanah</th>
                                     <th>Suhu</th>
+                                    <th>Curah Hujan</th>
                                     <th>Cluster</th>
                                     <th>Latitude</th>
                                     <th>Longitude</th>
@@ -39,6 +40,7 @@
                                     <td>{{ $row->ph_air }}</td>
                                     <td>{{ $row->ph_tanah }}</td>
                                     <td>{{ $row->suhu }}</td>
+                                    <td>{{ $row->curah_hujan }}</td>
                                     <td>{{ $row->clus_hasil }}</td>
                                     <td>{{ $row->latitude }}</td>
                                     <td>{{ $row->longitude }}</td>
@@ -89,6 +91,7 @@
                     $('#editph_tanah').val(data.ph_tanah);
                     $('#editph_air').val(data.ph_air);
                     $('#editsuhu').val(data.suhu);
+                    $('#editcurah_hujan').val(data.curah_hujan);
                     $('#editModal').modal('show');
                 }
             });

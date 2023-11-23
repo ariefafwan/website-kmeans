@@ -19,6 +19,7 @@ return new class extends Migration
             $table->float('ph_air');
             $table->float('ph_tanah');
             $table->float('suhu');
+            $table->float('curah_hujan');
             $table->string('luas_tanah');
             $table->string('longitude');
             $table->string('latitude');

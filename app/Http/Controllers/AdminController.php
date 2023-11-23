@@ -44,6 +44,7 @@ class AdminController extends Controller
             'ph_air' => 'required|numeric',
             'ph_tanah' => 'required|numeric',
             'suhu' => 'required|numeric',
+            'curah_hujan' => 'required|numeric',
             'desa_id' => 'required|numeric',
             'clus_hasil' => 'required',
             'latitude' => 'required',
@@ -61,6 +62,7 @@ class AdminController extends Controller
         $dataupload->ph_air = $request->ph_air;
         $dataupload->ph_tanah = $request->ph_tanah;
         $dataupload->suhu = $request->suhu;
+        $dataupload->curah_hujan = $request->curah_hujan;
         $dataupload->desa_id = $request->desa_id;
         $dataupload->clus_hasil = $request->clus_hasil;
         $dataupload->latitude = $request->latitude;
@@ -84,6 +86,7 @@ class AdminController extends Controller
             'ph_air' => 'required|numeric',
             'ph_tanah' => 'required|numeric',
             'suhu' => 'required|numeric',
+            'curah_hujan' => 'required|numeric',
             'desa_id' => 'required|numeric',
             'clus_hasil' => 'required',
             'latitude' => 'required|numeric',
@@ -101,6 +104,7 @@ class AdminController extends Controller
         $dataupload->ph_air = $request->ph_air;
         $dataupload->ph_tanah = $request->ph_tanah;
         $dataupload->suhu = $request->suhu;
+        $dataupload->curah_hujan = $request->curah_hujan;
         $dataupload->desa_id = $request->desa_id;
         $dataupload->clus_hasil = $request->clus_hasil;
         $dataupload->latitude = $request->latitude;
@@ -179,86 +183,4 @@ class AdminController extends Controller
         Alert::success('Informasi Pesan!', 'Desa Berhasil dihapus');
         return redirect()->route('desa.index');
     }
-
-    // public function cluster()
-    // {
-    //     $page = 'Cluster';
-    //     $cluster = ClusHasil::all();
-    //     return view('cluster.index', compact('page', 'cluster'));
-    // }
-
-    // public function storecluster(Request $request)
-    // {
-    //     $validator = Validator::make($request->all(), [
-    //         'name' => 'required',
-    //         'detail' => 'required',
-    //         // 'marker' => 'required|file:png,jpg,jpeg|max:5000',
-    //     ]);
-
-    //     if ($validator->fails()) {
-    //         Alert::error('Gagal!', 'Pastikan Detail Cluster Diisi Dengan Benar');
-    //         return redirect()->route('cluster.index');
-    //     }
-
-    //     // $file = $request->file('marker');
-    //     // $filemarker = time() . $file->getClientOriginalName();
-    //     // $file->storeAs('public/marker/', $filemarker);
-
-    //     $dataupload = new ClusHasil();
-    //     $dataupload->name = $request->name;
-    //     $dataupload->detail = $request->detail;
-    //     // $dataupload->marker = $filemarker;
-    //     $dataupload->save();
-
-    //     Alert::success('Informasi Pesan!', 'Cluster Berhasil Di Tambahkan');
-    //     return redirect()->route('cluster.index');
-    // }
-
-    // public function updatecluster(Request $request)
-    // {
-    //     $validator = Validator::make($request->all(), [
-    //         'name' => 'required',
-    //         'detail' => 'required',
-    //         // 'marker' => 'required|mimes:jpeg,png,jpg|max:5000',
-    //     ]);
-
-    //     if ($validator->fails()) {
-    //         Alert::error('Gagal!', 'Pastikan Detail Cluster Diisi Dengan Benar');
-    //         return redirect()->route('cluster.index');
-    //     }
-
-    //     $dataupload = ClusHasil::findOrFail($request->id);
-    //     // menghapus yang lama
-    //     // if ($request->marker) {
-    //     //     Storage::delete('public/marker/' . $dataupload->marker);
-    //     // };
-
-    //     // // save yang baru
-    //     // $file = $request->file('marker');
-    //     // $filemarker = time() . $file->getClientOriginalName();
-    //     // $file->storeAs('public/marker/', $filemarker);
-    //     $dataupload->name = $request->name;
-    //     $dataupload->detail = $request->detail;
-    //     // $dataupload->marker = $filemarker;
-    //     $dataupload->save();
-
-    //     Alert::success('Informasi Pesan!', 'Cluster Berhasil Di Update');
-    //     return redirect()->route('cluster.index');
-    // }
-
-    // public function editcluster($id)
-    // {
-    //     $data = ClusHasil::findOrFail($id);
-    //     return json_encode($data);
-    // }
-
-    // public function destroycluster($id)
-    // {
-    //     $data = ClusHasil::findOrFail($id);
-    //     // Storage::delete('public/marker/' . $data->marker);
-    //     $data->delete();
-
-    //     Alert::success('Informasi Pesan!', 'Cluster Berhasil dihapus');
-    //     return redirect()->route('cluster.index');
-    // }
 }
