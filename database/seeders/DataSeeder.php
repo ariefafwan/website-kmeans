@@ -14,7 +14,7 @@ class DataSeeder extends Seeder
     public function run(): void
     {
         $enum = ['C1', 'C2', 'C3'];
-        for ($i = 0; $i < 25; $i++) {
+        for ($i = 0; $i < 5; $i++) {
             Data::Create([
                 'luas_tanah' => rand(1, 30),
                 'ph_air' => rand(1, 30),

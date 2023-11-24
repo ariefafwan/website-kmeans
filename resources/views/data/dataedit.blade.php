@@ -21,7 +21,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="editluas_tanah" class="form-label fw-bold">Luas Tanah</label>
-                    <input type="number" class="form-control" id="editluas_tanah" name="luas_tanah" placeholder="Masukkan Luas Tanah...">
+                    <input type="number" step="any" class="form-control" id="editluas_tanah" name="luas_tanah" placeholder="Masukkan Luas Tanah...">
                 </div>
                 <div class="mb-3">
                     <label for="editclus_hasil" class="form-label fw-bold">Cluster</label>
@@ -34,23 +34,23 @@
                 </div>
                 <div class="mb-3">
                     <label for="editph_air" class="form-label fw-bold">Ph Air</label>
-                    <input type="number" class="form-control" id="editph_air" name="ph_air" placeholder="Masukkan Ph Air...">
+                    <input type="number" step="any" class="form-control" id="editph_air" name="ph_air" placeholder="Masukkan Ph Air...">
                 </div>
                 <div class="mb-3">
                     <label for="editph_tanah" class="form-label fw-bold">Ph Tanah</label>
-                    <input type="number" class="form-control" id="editph_tanah" name="ph_tanah" placeholder="Masukkan Ph Tanah...">
+                    <input type="number" step="any" class="form-control" id="editph_tanah" name="ph_tanah" placeholder="Masukkan Ph Tanah...">
                 </div>
                 <div class="mb-3">
                     <label for="editsuhu" class="form-label fw-bold">Suhu</label>
-                    <input type="number" class="form-control" id="editsuhu" name="suhu" placeholder="Masukkan Suhu...">
+                    <input type="number" step="any" class="form-control" id="editsuhu" name="suhu" placeholder="Masukkan Suhu...">
                 </div>
                 <div class="mb-3">
                     <label for="editcurah_hujan" class="form-label fw-bold">Curah Hujan</label>
-                    <input type="number" class="form-control" id="editcurah_hujan" name="curah_hujan" placeholder="Masukkan Curah Hujan...">
+                    <input type="number" step="any" class="form-control" id="editcurah_hujan" name="curah_hujan" placeholder="Masukkan Curah Hujan...">
                 </div>
                 <div class="mb-3">
                     <label for="editlatitude" class="form-label fw-bold">Latitude</label>
-                    <input type="text" class="form-control" id="editlatitude" name="latitude" placeholder="Masukkan Latitude...">
+                    <input type="text" step="any" class="form-control" id="editlatitude" name="latitude" placeholder="Masukkan Latitude...">
                 </div>
                 <div class="mb-3">
                     <label for="editlongitude" class="form-label fw-bold">Longitude</label>
