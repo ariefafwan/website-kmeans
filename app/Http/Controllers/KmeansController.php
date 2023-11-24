@@ -12,7 +12,7 @@ class KmeansController extends Controller
     {
         $page = "K-MEANS HASIL";
         $all = Data::all();
-        if ($all->count() <= 5) {
+        if ($all->count() < 5) {
             return view('gagal', compact('page'));
         }
         $data = [];

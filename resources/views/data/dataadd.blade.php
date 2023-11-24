@@ -20,7 +20,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="luas_tanah" class="form-label fw-bold">Luas Tanah</label>
-                    <input type="number" class="form-control" id="luas_tanah" name="luas_tanah" placeholder="Masukkan Luas Tanah...">
+                    <input type="number" step="any" class="form-control" id="luas_tanah" name="luas_tanah" placeholder="Masukkan Luas Tanah...">
                 </div>
                 <div class="mb-3">
                     <label for="clus_hasil" class="form-label fw-bold">Cluster</label>
@@ -33,19 +33,19 @@
                 </div>
                 <div class="mb-3">
                     <label for="ph_air" class="form-label fw-bold">Ph Air</label>
-                    <input type="number" class="form-control" id="ph_air" name="ph_air" placeholder="Masukkan Ph Air...">
+                    <input type="number" step="any" class="form-control" id="ph_air" name="ph_air" placeholder="Masukkan Ph Air...">
                 </div>
                 <div class="mb-3">
                     <label for="ph_tanah" class="form-label fw-bold">Ph Tanah</label>
-                    <input type="number" class="form-control" id="ph_tanah" name="ph_tanah" placeholder="Masukkan Ph Tanah...">
+                    <input type="number" step="any" class="form-control" id="ph_tanah" name="ph_tanah" placeholder="Masukkan Ph Tanah...">
                 </div>
                 <div class="mb-3">
                     <label for="suhu" class="form-label fw-bold">Suhu</label>
-                    <input type="number" class="form-control" id="suhu" name="suhu" placeholder="Masukkan Suhu...">
+                    <input type="number" step="any" class="form-control" id="suhu" name="suhu" placeholder="Masukkan Suhu...">
                 </div>
                 <div class="mb-3">
                     <label for="curah_hujan" class="form-label fw-bold">Curah Hujan</label>
-                    <input type="number" class="form-control" id="curah_hujan" name="curah_hujan" placeholder="Masukkan Curah Hujan...">
+                    <input type="number" step="any" class="form-control" id="curah_hujan" name="curah_hujan" placeholder="Masukkan Curah Hujan...">
                 </div>
                 <div class="mb-3">
                     <label for="latitude" class="form-label fw-bold">Latitude</label>
